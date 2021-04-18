@@ -34,4 +34,4 @@ app.get('/tp/:tin', async(req, res) => {
 })
 
 
-app.listen(8080)
+app.listen(process.env.PORT)
