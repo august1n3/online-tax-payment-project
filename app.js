@@ -23,7 +23,7 @@ app.get('/tp/:tin', async(req, res) => {
         }
 
         //This statement will find the taxpayer information with the provided Taxpayer number
-        collection.find({ "TIN": req.params.tin }).forEach(transformToString);
+        await collection.find({ "TIN": req.params.tin }).forEach(transformToString);
 
 
 
