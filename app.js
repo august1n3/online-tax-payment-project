@@ -9,7 +9,7 @@ const client = new MongoClient(process.env.MONGODB_URL, { useNewUrlParser: true,
 var taxpayer = ''
 
 app.get('/tp/:tin', async(req, res) => {
-    client.connect(err => {
+    await client.connect(err => {
         const collection = client.db('RevenueAuthorityDatabase').collection('Taxpayer Informations')
 
         //This will format the document to a JSON string
@@ -23,7 +23,7 @@ app.get('/tp/:tin', async(req, res) => {
         }
 
         //This statement will find the taxpayer information with the provided Taxpayer number
-        await collection.find({ "TIN": req.params.tin }).forEach(transformToString);
+        collection.find({ "TIN": req.params.tin }).forEach(transformToString);
 
 
 
