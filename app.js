@@ -30,7 +30,7 @@ app.get('/tp/:tin', async(req, res) => {
     });
 
     console.log(taxpayer)
-    res.json(taxpayer)
+    res.send(taxpayer)
 })
 
 
