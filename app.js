@@ -1,7 +1,7 @@
 const express = require('express')
 const app = express()
 const mongoose = require('mongoose')
-const TaxPayer = require('./models/taxpayer')
+const TaxPayer = require('./taxpayer')
 
 require('dotenv/config')
 
