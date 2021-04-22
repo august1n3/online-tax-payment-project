@@ -15,7 +15,7 @@ mongoose.connect(process.env.MONGODB_URL, { useUnifiedTopology: true, useNewUrlP
 app.get('/taxpayers/:TIN', (req, res) => {
     let tin = req.params.TIN
 
-    TaxPayer.findOne({ "TIN": "MGi3refspwf4tp" })
+    TaxPayer.findOne({ "TIN": tin })
         .then((result) => { res.json(result) })
         .catch((error) => console.log(error))
     console.log()
