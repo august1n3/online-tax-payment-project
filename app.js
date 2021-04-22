@@ -1,37 +1,28 @@
 const express = require('express')
 const app = express()
+const mongoose = require('mongoose')
+const TaxPayer = require('./models/taxpayer')
+
 require('dotenv/config')
 
+var isMongoDBConnected = false
 
-const MongoClient = require('mongodb').MongoClient
-
-const client = new MongoClient(process.env.MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true })
-var taxpayer = ''
-
-app.get('/tp/:tin', async(req, res) => {
-    await client.connect(err => {
-        const collection = client.db('RevenueAuthorityDatabase').collection('Taxpayer Informations')
-
-        //This will format the document to a JSON string
-        function transformToString(doc) {
-
-            if (JSON.stringify(doc, 4) != null) {
-                taxpayer = JSON.stringify(doc, 4)
-
-            }
-
-        }
-
-        //This statement will find the taxpayer information with the provided Taxpayer number
-        collection.find({ "TIN": req.params.tin }).forEach(transformToString);
+mongoose.connect(process.env.MONGODB_URL, { useUnifiedTopology: true, useNewUrlParser: true })
+    .then((result) => isMongoDBConnected = true)
+    .catch((error) => console.log(error))
 
 
+app.get('/taxpayers/:TIN', (req, res) => {
+    let tin = req.params.TIN
 
-    });
+    TaxPayer.findOne({ "TIN": "MGi3refspwf4tp" })
+        .then((result) => { res.json(result) })
+        .catch((error) => console.log(error))
+    console.log()
 
-    console.log(taxpayer)
-    res.send(taxpayer)
 })
 
 
-app.listen(process.env.PORT)
+
+
+app.listen(8000)
