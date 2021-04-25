@@ -5,10 +5,9 @@ const TaxPayer = require('./taxpayer')
 
 require('dotenv/config')
 
-var isMongoDBConnected = false
 
 mongoose.connect(process.env.MONGODB_URL, { useUnifiedTopology: true, useNewUrlParser: true })
-    .then((result) => isMongoDBConnected = true)
+    .then((result) => console.log('connected'))
     .catch((error) => console.log(error))
 
 
