@@ -18,7 +18,7 @@ app.get('/taxpayers/:TIN', (req, res) => {
         .then((result) => {
             console.log("kitu flani")
             res.json(result) })
-        .catch((error) => console.log(error))
+        .catch((error) => console.log(error.message))
     console.log()
 
 })
