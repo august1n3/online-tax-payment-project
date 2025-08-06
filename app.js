@@ -15,7 +15,9 @@ app.get('/taxpayers/:TIN', (req, res) => {
     let tin = req.params.TIN
 
     TaxPayer.findOne({ "TIN": tin })
-        .then((result) => { res.json(result) })
+        .then((result) => {
+            console.log("kitu flani")
+            res.json(result) })
         .catch((error) => console.log(error))
     console.log()
 
