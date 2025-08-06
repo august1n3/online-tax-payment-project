@@ -3,7 +3,6 @@ const app = express()
 const mongoose = require('mongoose')
 const TaxPayer = require('./models/taxpayer')
 
-require('dotenv/config')
 
 
 mongoose.connect(process.env.MONGODB_URL, { useUnifiedTopology: true, useNewUrlParser: true })
