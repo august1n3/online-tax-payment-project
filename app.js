@@ -12,6 +12,7 @@ mongoose.connect(process.env.MONGODB_URL, { useUnifiedTopology: true, useNewUrlP
 
 
 app.get('/taxpayers/:TIN', (req, res) => {
+    console.log("Fetching taxpayer with TIN:", req.params.TIN)
     let tin = req.params.TIN
 
     TaxPayer.findOne({ "TIN": tin })
